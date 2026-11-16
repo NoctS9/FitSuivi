@@ -184,7 +184,8 @@ ${rcC[0]=="❤"?"":`<div class="card">${rcC=="Mon frigo"?`<label>Qu’as-tu dans
 <div class="rg big">${L.map(card).join("")||`<div class="mu">Aucune recette ici pour l’instant.</div>`}</div>`}
 async function reco(){const g=tg(),t=sum(eat());rcC="Pour toi";rcX=`Il reste ${Math.max(g.k-t.k,0)} kcal et ${Math.max(g.p-t.p,0)} g de protéines à manger aujourd’hui, il est ${new Date().getHours()} h : propose des plats adaptés à ce moment de la journée et à ce budget.`;const n=S.rl.length;await rec();rcC=null;rcX="";if(S.rl.length>n)render()}
 
-async function pics(){await Promise.all(S.rl.filter(r=>r.q&&!r.url).slice(0,8).map(async r=>{try{const j=await(await fetch(API+"/photo?q="+encodeURIComponent(r.q))).json();r.url=j.url||""}catch(e){}}))}
+const shrink=u=>new Promise(r=>{const i=new Image();i.onerror=()=>r("");i.onload=()=>{const s=Math.min(1,420/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);r(c.toDataURL("image/jpeg",.6))};i.src=u});
+async function pics(){await Promise.all(S.rl.filter(r=>r.q&&!r.url).slice(0,8).map(async r=>{try{const j=await(await fetch(API+"/photo?q="+encodeURIComponent(r.q))).json();r.url=j.url?await shrink(j.url):""}catch(e){}}))}
 /* ---------- SPORT ---------- */
 const lastOf=n=>{for(let i=S.log.length-1;i>=0;i--){const e=S.log[i].ex.find(x=>x.n==n&&x.kg);if(e)return e}};
 function vTr(){const p=S.prog;
