@@ -1,0 +1,54 @@
+FITSUIVI V3 — APPLICATION WEB INSTALLABLE (PWA)
+=============================================
+
+CONTENU
+index.html             Entrée de l'application
+style.css              Interface responsive vert menthe
+app.js                 Logique Calories / Recettes / Sport
+sw.js                  Cache pour le fonctionnement hors ligne des pages
+manifest.webmanifest   Installation sur Android
+icon-192.png, icon-512.png  Icônes
+
+INSTALLATION GITHUB PAGES
+1. Faire une copie de sauvegarde du dépôt GitHub actuel et exporter vos données si possible.
+2. Déposer les 7 fichiers listés ci-dessus à la racine de votre dépôt GitHub Pages,
+   à la place des anciens fichiers correspondants. Supprimer ou remplacer l'ancien
+   worker.js du dépôt n'est PAS nécessaire : le Worker est hébergé sur Cloudflare.
+3. Dans GitHub, attendre la publication de GitHub Pages, puis ouvrir l'URL HTTPS.
+4. Si l'ancienne interface persiste, actualiser sans effacer les données du site.
+5. Sur Android / Chrome : menu ⋮ puis « Ajouter à l'écran d'accueil ».
+
+IMPORTANT : CONSERVATION DES DONNÉES
+La nouvelle application lit UNE FOIS les données stockées par l'ancienne version
+sur la MÊME origine (domaine + protocole + port), sous la clé localStorage
+« fitsuivi1 », et les recopie dans « fitsuivi_v3 ». Elle ne supprime pas
+les anciennes données. Il vaut mieux publier au même emplacement GitHub Pages.
+Si vous changez de domaine ou de chemin d'installation, la reprise automatique
+peut ne pas fonctionner. Exportez vos données depuis les réglages.
+
+FONCTIONS
+- Calories : repas, calories/macros/fibres, saisie manuelle, recherche
+  Open Food Facts, code-barres (caméra si navigateur compatible), estimation IA.
+- Recettes : exemples intégrés, catégories, favoris, recette personnalisée,
+  idées depuis les ingrédients disponibles, ajout au journal.
+- Sport : programme salle débutant disponible sans IA, séances enregistrées,
+  poids et courbe de progression, programme IA si API disponible.
+- Sauvegarde/import JSON depuis la roue dentée.
+
+POINTS À SAVOIR
+- Les données sont locales au navigateur : pas de synchronisation entre appareils.
+- La recherche Open Food Facts nécessite Internet et dépend de ses données.
+- Le scan caméra nécessite HTTPS, une permission et le support BarcodeDetector.
+- Les fonctions IA appellent le Worker Cloudflare existant ; elles sont soumises
+  aux quotas et disponibilités de Gemini. Le reste fonctionne sans l'IA.
+- Pour compatibilité, l'APP_KEY héritée de l'ancien index.html reste exposée côté
+  client. Ce n'est PAS une véritable authentification. Avant partage public,
+  implémenter une authentification sûre et des limites d'usage côté Worker.
+- Les recettes préchargées ont des valeurs nutritionnelles indicatives.
+- Le programme d'entraînement est un exemple générique, à adapter au niveau,
+  aux douleurs/contre-indications et aux conseils du personnel de salle.
+
+TESTS
+- Syntaxe JavaScript vérifiée avec Node.js.
+- Rendu de base des 3 écrans vérifié avec DOM simulé.
+- Les API distantes et les fonctions caméra n'ont pas été testées en réel.
