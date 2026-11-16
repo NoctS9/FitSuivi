@@ -62,7 +62,7 @@ function tg(){const p=S.p;let k=+p.kcal||0;if(!k&&p.h&&p.age){const b=10*cw()+6.
 const bar=(v,m)=>`<div class="bar"><i style="width:${m?Math.min(100,v/m*100):0}%"></i></div>`;
 function go(t){tab=t;msg="";render()}
 function render(){$("#fab").style.display=(S.p.ok&&tab=="cal"&&sess===null)?"flex":"none";if(!S.p.ok){$("#v").innerHTML=vOb();$("#nav").innerHTML="";return}$("#v").innerHTML={cal:vHome,w:vW,rc:vRc,tr:vTr,pr:vPr}[tab]();$("#nav").innerHTML=tabs.map(t=>`<button class="${t[0]==tab?"on":""}" onclick="go('${t[0]}')"><span>${t[2]}</span>${t[1]}</button>`).join("")}
-const API="https://fitsuivi.ayoubbouchlagham76.workers.dev/",APPKEY="Nabilabou76";
+const API="https://fitsuivi.ayoubbouchlagham76.workers.dev",APPKEY="Nabilabou76";
 async function ai(prompt,imgs){const im=[];for(const b of imgs||[])im.push(await new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(",")[1]);f.readAsDataURL(b)}));
 const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json","x-app-key":APPKEY},body:JSON.stringify({prompt,images:im})}).catch(()=>{throw new Error("Serveur injoignable (adresse du worker ou APP_KEY à vérifier dans index.html)")});if(!r.ok){let t="";try{t=(await r.text()).slice(0,140)}catch(e){}throw new Error("Erreur serveur "+r.status+" "+t)}return r.json()}
 function rs(f){return new Promise(r=>{const i=new Image();i.onerror=()=>r(f);i.onload=()=>{const s=Math.min(1,1280/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);c.toBlob(b=>r(b||f),"image/jpeg",.85)};i.src=URL.createObjectURL(f)})}
