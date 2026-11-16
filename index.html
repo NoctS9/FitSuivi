@@ -1,0 +1,211 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>FitSuivi</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6f3;--card:#fff;--tx:#1d2420;--mu:#68736c;--ac:#1f8a5b;--ac2:#e6f3ec;--bd:#e0e5df;--wa:#c2410c;color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121613;--card:#1b211d;--tx:#eef2ee;--mu:#9aa69e;--ac:#3ecf8e;--ac2:#1c3328;--bd:#2a332d;--wa:#fb923c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121613;--card:#1b211d;--tx:#eef2ee;--mu:#9aa69e;--ac:#3ecf8e;--ac2:#1c3328;--bd:#2a332d;--wa:#fb923c;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+#v{max-width:560px;margin:0 auto;padding:14px}
+h1{font-size:22px;margin:4px 0 12px}h3{margin:0 0 10px;font-size:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:12px}
+.big{font-size:30px;font-weight:700}.mu{color:var(--mu);font-size:13px}.wa{color:var(--wa)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}
+input,select,textarea{width:100%;box-sizing:border-box;padding:10px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;margin:3px 0}
+textarea{min-height:76px}
+button{padding:11px 14px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;margin:3px 0}
+button.g{background:var(--ac2);color:var(--ac)}button.x{background:none;color:var(--mu);padding:4px 8px;flex:0}
+button:disabled{opacity:.5}
+.bar{height:10px;background:var(--ac2);border-radius:6px;overflow:hidden;margin:4px 0 8px}.bar i{display:block;height:100%;background:var(--ac)}
+.li{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--bd)}
+.li:first-of-type{border-top:0}
+label{font-size:12px;color:var(--mu)}
+#nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+#nav button{flex:1;background:none;color:var(--mu);font-size:11px;padding:4px;margin:0}#nav button.on{color:var(--ac)}#nav span{display:block;font-size:20px}
+body{background:var(--bg)}h1{font-size:26px;letter-spacing:-.5px}.card{border-radius:22px;border:0;box-shadow:0 2px 14px rgba(0,0,0,.07);padding:16px}.bar{height:8px}
+.hero{display:flex;align-items:center;justify-content:space-around;gap:10px;border-radius:26px;padding:18px;margin-bottom:12px;background:linear-gradient(135deg,#fb923c,#ea580c);color:#fff;line-height:1.9;box-shadow:0 8px 24px rgba(234,88,12,.3)}
+.sl{display:flex;gap:12px;align-items:center}.ic{font-size:26px;width:46px;height:46px;border-radius:14px;background:var(--ac2);display:flex;align-items:center;justify-content:center;flex:none}.sl>div:nth-child(2){flex:1}
+button.pl{width:40px;height:40px;border-radius:50%;padding:0;font-size:22px;flex:none}.mi{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding:6px 0 0 58px}
+#nav{border-radius:24px 24px 0 0;border:0;box-shadow:0 -4px 20px rgba(0,0,0,.08)}.ad{border:2px solid var(--ac)}
+:root{--ac:#f97316;--ac2:#fff1e6}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ac:#fb923c;--ac2:#3a2414}}:root[data-theme="dark"]{--ac:#fb923c;--ac2:#3a2414}
+.th{width:46px;height:46px;border-radius:12px;object-fit:cover;margin-right:10px}.mi{padding-left:0;margin-top:8px}.mi span{display:flex;align-items:center}
+.wk{display:flex;gap:6px;margin-bottom:12px}.wk div{flex:1;text-align:center;border-radius:14px;padding:6px 0;background:var(--card);border:2px solid transparent}.wk small{display:block;color:var(--mu);font-size:11px}.wk .on{border-color:var(--ac)}.wk .td{background:var(--ac);color:#fff}.wk .td small{color:#fff}
+.bd{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.bd span{display:flex;flex-direction:column;align-items:center;font-size:26px;width:22%}.bd small{font-size:10px;color:var(--mu)}.bd .off{filter:grayscale(1);opacity:.35}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}.chips button{padding:7px 12px;border-radius:20px;font-size:13px}.mc{font-size:13px;font-weight:600;margin:8px 0}.mc span{background:var(--ac2);border-radius:10px;padding:5px 8px;text-align:center}details{margin:6px 0}summary{color:var(--ac);font-weight:600}
+html,body{background:linear-gradient(180deg,#fff0de 0%,#ffe2cf 50%,#fff7ee 100%) fixed!important}body{padding-bottom:110px}#v{animation:up .35s ease}@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.card{border-radius:28px;box-shadow:0 6px 22px rgba(234,88,12,.1);padding:18px}h1{font-size:28px;font-weight:800}button{min-height:46px;border-radius:16px;font-size:16px}input,select,textarea{font-size:16px;border-radius:14px;padding:12px;background:#fff7ef}
+#nav{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));border-radius:30px;padding:8px;box-shadow:0 10px 30px rgba(234,88,12,.25)}#nav button{min-height:0;border-radius:20px;padding:6px 2px}#nav button.on{background:var(--ac2)}#nav span{font-size:24px}
+.hd{display:flex;align-items:center;gap:8px;margin-bottom:12px}.bub{flex:1;background:#fff;border-radius:22px 22px 22px 6px;padding:13px 15px;font-weight:600;box-shadow:0 4px 14px rgba(234,88,12,.12)}.ms{flex:none;animation:bob 2.4s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-6px)}}
+.wk{align-items:center}.wk div{padding:9px 0;border-radius:18px}.wk button.x{flex:0;font-size:24px;min-height:0;color:var(--ac)}.wk .on{border-color:var(--ac)}.li button.x{min-height:0}.pl{width:46px;height:46px}
+.sc{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}.sc button{flex:none;white-space:nowrap}.rg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}.rc{background:#fff;border-radius:24px;padding:8px 8px 12px;box-shadow:0 6px 18px rgba(234,88,12,.12)}.rc b{display:block;margin:8px 4px 2px;font-size:15px;line-height:1.2}.rc .mu{margin:0 4px}
+.rh{position:relative;height:112px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:58px;overflow:hidden}.rh small{position:absolute;left:8px;bottom:5px;font-size:15px}.rh i{position:absolute;right:8px;top:6px;font-style:normal;font-size:16px}.rimg{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.fh{position:relative;height:230px;margin:10px 0;border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:110px;overflow:hidden}.fv2{position:absolute;right:12px;top:12px;width:46px;padding:0;font-size:22px;background:#fff}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.ig div{background:var(--ac2);border-radius:14px;padding:8px;font-size:14px}.ie{font-size:22px;margin-right:6px}
+.stp{display:flex;gap:10px;margin:8px 0}.stp b{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ac);color:#fff;text-align:center;line-height:28px}.stars{font-size:30px;margin:6px 0}
+.ct{position:relative;height:118px;border-radius:26px;overflow:hidden;color:#fff;padding:14px;display:flex;align-items:flex-end;box-shadow:0 6px 18px rgba(234,88,12,.18)}.ct::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(60,20,0,.35),transparent 65%)}.ct b{position:relative;z-index:1;font-size:17px;line-height:1.15;text-shadow:0 1px 6px rgba(0,0,0,.3)}.ct span{position:absolute;right:-6px;top:-8px;font-size:88px;opacity:.6;transform:rotate(-12deg);filter:blur(.6px)}.ct i{position:absolute;left:10px;top:6px;font-style:normal;font-size:44px;opacity:.4;transform:rotate(10deg)}
+.rg.big{grid-template-columns:1fr}.rg.big .rh{height:210px;border-radius:22px}.rg.big .rc b{font-size:19px}.hs{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px}.hs .rc{flex:none;width:160px}
+</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#fb923c"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"></head><body><div id="v"></div><nav id="nav"></nav>
+<script>
+const $=s=>document.querySelector(s),K="fitsuivi1";
+const iso=d=>{const x=new Date(d);return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
+const T=iso(Date.now()),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let S=null;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(!S)S={p:{h:"",age:"",sex:"h",act:1.55,kcal:"",prot:"",days:3,dur:60,eq:"Salle complète (machines + poids libres)",gym:""},w:[{d:"2026-01-01",v:166},{d:T,v:91}],m:{},prog:null,log:[]};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+let tab="cal",slot="dej",add=0,cur=null,dsc="",sess=null,msg="";
+const tabs=[["cal","Accueil","🏠"],["w","Poids","⚖️"],["rc","Recettes","🍳"],["tr","Sport","🏋️"],["pr","Profil","👤"]];
+const sw=()=>[...S.w].sort((a,b)=>a.d<b.d?-1:1),cw=()=>{const a=sw();return a.length?a[a.length-1].v:0};
+function tg(){const p=S.p;let k=+p.kcal||0;if(!k&&p.h&&p.age){const b=10*cw()+6.25*p.h-5*p.age+(p.sex=="h"?5:-161);k=Math.round(b*p.act*(+p.gf||1.08)/10)*10}return{k,p:+p.prot||Math.round(1.8*cw())}}
+const bar=(v,m)=>`<div class="bar"><i style="width:${m?Math.min(100,v/m*100):0}%"></i></div>`;
+function go(t){tab=t;msg="";render()}
+function render(){if(!S.p.ok){$("#v").innerHTML=vOb();$("#nav").innerHTML="";return}$("#v").innerHTML={cal:vHome,w:vW,rc:vRc,tr:vTr,pr:vPr}[tab]();$("#nav").innerHTML=tabs.map(t=>`<button class="${t[0]==tab?"on":""}" onclick="go('${t[0]}')"><span>${t[2]}</span>${t[1]}</button>`).join("")}
+const API="https://REMPLACE-PAR-TON-WORKER.workers.dev",APPKEY="REMPLACE-PAR-TON-SECRET";
+async function ai(prompt,imgs){const im=[];for(const b of imgs||[])im.push(await new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(",")[1]);f.readAsDataURL(b)}));
+const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json","x-app-key":APPKEY},body:JSON.stringify({prompt,images:im})});if(!r.ok)throw new Error("Erreur serveur "+r.status);return r.json()}
+function rs(f){return new Promise(r=>{const i=new Image();i.onerror=()=>r(f);i.onload=()=>{const s=Math.min(1,1280/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);c.toBlob(b=>r(b||f),"image/jpeg",.85)};i.src=URL.createObjectURL(f)})}
+
+/* ---------- REPAS ---------- */
+function vCalOld(){const ms=S.m[T]||[],t=ms.reduce((a,m)=>({k:a.k+m.k,p:a.p+m.p,g:a.g+m.g,l:a.l+m.l}),{k:0,p:0,g:0,l:0}),g=tg();
+return `<h1>Aujourd’hui</h1><div class="card"><div class="big">${t.k} <span class="mu">/ ${g.k||"?"} kcal</span></div>${bar(t.k,g.k)}
+<div class="mu">Protéines ${t.p} / ${g.p} g · Glucides ${t.g} g · Lipides ${t.l} g</div>${bar(t.p,g.p)}${g.k?"":`<div class="mu wa">Renseigne taille et âge dans Profil pour calculer ton objectif.</div>`}</div>
+<div class="card"><h3>Ajouter un repas</h3><textarea id="desc" oninput="dsc=this.value" placeholder="Décris avec les quantités : 200 g de riz cuit, 2 œufs, 1 c. à soupe d’huile…">${esc(dsc)}</textarea>
+<input type="file" id="ph" accept="image/*"><div class="row"><button id="eb" onclick="est()">Estimer avec l’IA</button><button class="g" onclick="manual()">Saisie manuelle</button></div><div id="st" class="mu">${esc(msg)}</div>
+${cur?`<div style="border-top:1px solid var(--bd);margin-top:8px;padding-top:8px"><label>Nom</label><input id="n" value="${esc(cur.nom)}"><div class="row"><div><label>kcal</label><input id="k" type="number" value="${cur.kcal}"></div><div><label>Prot. g</label><input id="p" type="number" value="${cur.p}"></div><div><label>Gluc. g</label><input id="g" type="number" value="${cur.g}"></div><div><label>Lip. g</label><input id="l" type="number" value="${cur.l}"></div></div>
+${cur.hyp?`<div class="mu">💡 ${esc(cur.hyp)}</div>`:""}<button onclick="addM()">Ajouter au journal</button></div>`:""}</div>
+<div class="card"><h3>Repas du jour</h3>${ms.length?ms.map((m,i)=>`<div class="li"><div>${esc(m.nom)}<div class="mu">${m.k} kcal · P ${m.p} · G ${m.g} · L ${m.l}</div></div><button class="x" onclick="delM(${i})">✕</button></div>`).join(""):`<div class="mu">Rien pour l’instant.</div>`}</div>`}
+function manual(){cur={nom:"",kcal:0,p:0,g:0,l:0,hyp:""};render()}
+async function est(){const d=$("#desc").value.trim(),f=$("#ph").files[0];dsc=d;if(!d&&!f){$("#st").textContent="Ajoute une description ou une photo.";return}
+$("#eb").disabled=true;$("#st").textContent="Analyse en cours…";
+try{const im=f?[await rs(f)]:[];ph=f?await th(im[0]):"";const r=await ai(`Tu es un diététicien rigoureux. Estime les calories et macros de ce repas${f?" (photo jointe)":""}. Description de la personne : "${d||"aucune"}".
+Règles : ne sous-estime JAMAIS (les apps photo le font souvent). Compte les matières grasses de cuisson, sauces, beurre, fromage, boissons et pain. Si une portion est incertaine, prends une valeur réaliste plutôt que basse. Si la description donne des poids, fais-leur confiance.
+Réponds UNIQUEMENT en JSON : {"nom":string,"kcal":number,"p":number,"g":number,"l":number,"hyp":string}. "hyp" = en une ou deux phrases en français, les portions que tu as supposées et ce que la personne devrait vérifier ou peser.`,im);
+cur={nom:r.nom||"Repas",kcal:Math.round(r.kcal)||0,p:Math.round(r.p)||0,g:Math.round(r.g)||0,l:Math.round(r.l)||0,hyp:r.hyp||""};msg="";render()}
+catch(e){$("#eb").disabled=false;$("#st").textContent="Échec : "+(e.message||e.code||"erreur")}}
+function addM(){const v=i=>+$(i).value||0;(S.m[day]=S.m[day]||[]).push({s:slot,im:ph,nom:$("#n").value||"Repas",k:v("#k"),p:v("#p"),g:v("#g"),l:v("#l")});cur=null;dsc="";add=0;ph="";save();render()}
+function delM(i){S.m[day].splice(i,1);save();render()}
+
+const SL=[["pd","Petit-déjeuner","🥐",.25],["dej","Déjeuner","🥗",.35],["col","Collation","🍎",.10],["din","Dîner","🍝",.30]];
+const eat=()=>S.m[day]||[],sum=l=>l.reduce((a,m)=>({k:a.k+m.k,p:a.p+m.p,g:a.g+m.g,l:a.l+m.l}),{k:0,p:0,g:0,l:0}),inS=(m,s)=>(m.s||"dej")==s;
+function budget(){const g=tg(),t=sum(eat());return `<div class="card"><div class="mu">Il te reste aujourd’hui</div><div class="big">${g.k?g.k-t.k:"?"} kcal</div>${bar(t.k,g.k)}${SL.map(s=>`<div class="li"><span>${s[2]} ${s[1]}</span><span>${sum(eat().filter(m=>inS(m,s[0]))).k} / ${Math.round(g.k*s[3])} kcal</span></div>`).join("")}</div>`}
+function openA(s){slot=s;add=1;cur=null;render();scrollTo(0,0)}
+function closeA(){add=0;cur=null;ph="";render()}
+function vHome(){const g=tg(),t=sum(eat()),r=g.k-t.k,pc=g.k?Math.min(1,t.k/g.k):0,C=2*Math.PI*54,fg=Math.round(g.k*.25/9),cg=g.k?Math.max(0,Math.round((g.k-g.p*4-fg*9)/4)):0,sn=SL.find(s=>s[0]==slot),
+d=new Date(day+"T12:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+return `<div class="mu" style="text-transform:capitalize">${d}</div>${head()}${strip()}
+<div class="hero"><svg viewBox="0 0 130 130" width="150"><circle cx="65" cy="65" r="54" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="12"/><circle cx="65" cy="65" r="54" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C*pc} ${C}" transform="rotate(-90 65 65)"/><text x="65" y="67" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">${g.k?Math.max(r,0):"?"}</text><text x="65" y="84" text-anchor="middle" font-size="11" fill="#fff" opacity=".85">kcal restantes</text></svg>
+<div><div>🍽️ Mangé <b>${t.k}</b></div><div>🎯 Objectif <b>${g.k||"?"}</b></div><div>⚖️ Poids <b>${cw()} kg</b></div>${r<0&&g.k?`<div>⚠️ +${-r} kcal en trop</div>`:""}</div></div>
+${g.k?"":`<div class="card wa">Renseigne ta taille et ton âge dans Profil pour calculer ton objectif.</div>`}
+<div class="card"><div class="row">${[["Protéines",t.p,g.p,"#ef4444"],["Glucides",t.g,cg,"#f59e0b"],["Lipides",t.l,fg,"#3b82f6"]].map(x=>`<div style="text-align:center"><svg viewBox="0 0 44 44" width="68"><circle cx="22" cy="22" r="18" fill="none" stroke="var(--ac2)" stroke-width="5"/><circle cx="22" cy="22" r="18" fill="none" stroke="${x[3]}" stroke-width="5" stroke-linecap="round" stroke-dasharray="${113*Math.min(1,x[2]?x[1]/x[2]:0)} 113" transform="rotate(-90 22 22)"/><text x="22" y="26" text-anchor="middle" font-size="11" font-weight="700" fill="var(--tx)">${x[1]}</text></svg><div class="mu">${x[0]}<br>/ ${x[2]} g</div></div>`).join("")}</div></div>
+${gm()}
+${add?`<div class="card ad"><div class="row"><h3 style="flex:3">${sn[2]} ${sn[1]}</h3><button class="x" onclick="closeA()">Fermer ✕</button></div><textarea id="desc" oninput="dsc=this.value" placeholder="Décris avec les quantités : 200 g de riz cuit, 2 œufs, 1 c. à soupe d’huile…">${esc(dsc)}</textarea><input type="file" id="ph" accept="image/*"><div class="row"><button id="eb" onclick="est()">✨ Estimer avec l’IA</button><button class="g" onclick="manual()">Saisie manuelle</button></div><div id="st" class="mu">${esc(msg)}</div>${ph?`<img src="${ph}" class="th" style="width:100%;height:150px;margin:6px 0">`:""}
+${cur?`<div style="border-top:1px solid var(--bd);margin-top:8px;padding-top:8px"><label>Nom</label><input id="n" value="${esc(cur.nom)}"><div class="row"><div><label>kcal</label><input id="k" type="number" value="${cur.kcal}"></div><div><label>Prot. g</label><input id="p" type="number" value="${cur.p}"></div><div><label>Gluc. g</label><input id="g" type="number" value="${cur.g}"></div><div><label>Lip. g</label><input id="l" type="number" value="${cur.l}"></div></div>${cur.hyp?`<div class="mu">💡 ${esc(cur.hyp)}</div>`:""}<button onclick="addM()">Ajouter au journal</button></div>`:""}</div>`:""}
+${SL.map(s=>{const l=eat().map((m,i)=>[m,i]).filter(x=>inS(x[0],s[0])),c=sum(l.map(x=>x[0])).k,b=Math.round(g.k*s[3]);return `<div class="card"><div class="sl"><div class="ic">${s[2]}</div><div><b>${s[1]}</b><div class="mu">${c} / ${g.k?b:"?"} kcal${g.k&&c>b?" · ⚠️ dépassé":""}</div>${bar(c,b)}</div><button class="pl" onclick="openA('${s[0]}')">+</button></div>${l.map(x=>`<div class="mi"><span>${x[0].im?`<img src="${x[0].im}" class="th">`:""}${esc(x[0].nom)} · ${x[0].k} kcal</span><button class="x" onclick="delM(${x[1]})">✕</button></div>`).join("")}</div>`}).join("")}`}
+
+/* ---------- POIDS ---------- */
+function chart(a){if(a.length<2)return"";const W=320,H=150,P=26,t0=+new Date(a[0].d),t1=+new Date(a[a.length-1].d),vs=a.map(e=>e.v),mn=Math.min(...vs)-4,mx=Math.max(...vs)+4;
+const X=e=>P+(+new Date(e.d)-t0)/((t1-t0)||1)*(W-2*P),Y=e=>H-P-(e.v-mn)/(mx-mn)*(H-2*P),f=a[0],l=a[a.length-1];
+return `<svg viewBox="0 0 ${W} ${H}" style="width:100%"><polyline fill="none" stroke="var(--ac)" stroke-width="2.5" points="${a.map(e=>X(e)+","+Y(e)).join(" ")}"/>${a.map(e=>`<circle cx="${X(e)}" cy="${Y(e)}" r="3" fill="var(--ac)"/>`).join("")}<text x="${X(f)}" y="${Y(f)-8}" font-size="11" fill="var(--mu)">${f.v} kg</text><text x="${X(l)}" y="${Y(l)-8}" font-size="11" text-anchor="end" fill="var(--mu)">${l.v} kg</text></svg>`}
+function vW(){const a=sw(),c=a[a.length-1],h=S.p.h/100,imc=h?c.v/(h*h):0;
+const df=n=>{const lim=iso(Date.now()-n*864e5),b=[...a].reverse().find(e=>e.d<=lim);if(!b)return"–";const x=c.v-b.v;return(x>0?"+":"")+x.toFixed(1)+" kg"};
+const cat=imc<18.5?"Maigreur":imc<25?"Corpulence normale":imc<30?"Surpoids":"Obésité";
+return `<h1>Poids</h1><div class="card"><div class="big">${c.v} kg</div><div class="mu">Depuis le départ (${a[0].v} kg) : <b>${(c.v-a[0].v).toFixed(1)} kg</b></div>${chart(a)}</div>
+<div class="card"><div class="row"><div><label>IMC</label><div class="big" style="font-size:22px">${imc?imc.toFixed(1):"–"}</div><div class="mu">${imc?cat:"Renseigne ta taille (Profil)"}</div></div><div><label>7 jours</label><div style="font-size:20px">${df(7)}</div></div><div><label>30 jours</label><div style="font-size:20px">${df(30)}</div></div></div></div>
+<div class="card"><h3>Nouvelle pesée</h3><div class="row"><input id="wv" type="number" step="0.1" placeholder="kg"><input id="wd" type="date" value="${T}"></div><button onclick="addW()">Enregistrer</button></div>
+<div class="card"><h3>Historique</h3>${[...a].reverse().slice(0,30).map(e=>`<div class="li"><span>${e.d}</span><b>${e.v} kg</b><button class="x" onclick="delW('${e.d}')">✕</button></div>`).join("")}</div>`}
+function addW(){const v=parseFloat($("#wv").value),d=$("#wd").value||T;if(!v)return;S.w=S.w.filter(e=>e.d!=d);S.w.push({d,v});save();render()}
+function delW(d){if(S.w.length>1){S.w=S.w.filter(e=>e.d!=d);save();render()}}
+
+let day=T,wo=0,ob=0,ph="",rcI="",rcT="Cookeo",rcS="dej",rcR=[];
+const th=b=>new Promise(r=>{const i=new Image();i.onerror=()=>r("");i.onload=()=>{const s=120/Math.max(i.width,i.height),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);r(c.toDataURL("image/jpeg",.6))};i.src=URL.createObjectURL(b)});
+const stripOld=()=>`<div class="wk">${[6,5,4,3,2,1,0].map(n=>{const x=new Date(Date.now()-n*864e5),on=(S.m[iso(x)]||[]).length;return `<div class="${on?"on":""} ${n?"":"td"}"><small>${"DLMMJVS"[x.getDay()]}</small><b>${x.getDate()}</b></div>`}).join("")}</div>`;
+function game(){const ds=Object.keys(S.m),meals=ds.reduce((a,k)=>a+S.m[k].length,0),xp=meals*10+S.w.length*15+S.log.length*50;let st=0,d=Date.now();if(!(S.m[iso(d)]||[]).length)d-=864e5;while((S.m[iso(d)]||[]).length){st++;d-=864e5}
+const lv=Math.floor(Math.sqrt(xp/40))+1,lost=sw()[0].v-cw();return{xp,lv,st,lo:40*(lv-1)**2,hi:40*lv*lv,B:[["🔥","Série 3 j",st>=3],["🔥","Série 7 j",st>=7],["🏆","Série 30 j",st>=30],["🏋️","1ère séance",S.log.length>=1],["💪","10 séances",S.log.length>=10],["🍽️","50 repas",meals>=50],["⚖️","−50 kg",lost>=50],["🥇","−75 kg",lost>=75]]}}
+function gm(){const G=game(),g=tg(),t=sum(eat()),ch=[["Atteindre tes protéines",g.k&&t.p>=g.p],["Logger 3 repas ou plus",eat().length>=3],["Faire une séance",S.log.some(l=>l.d==T)]];
+return `<div class="card"><div class="row"><div style="flex:1"><div class="mu">Niveau</div><div class="big">${G.lv}</div></div><div style="flex:3"><div class="mu">${G.xp} XP · prochain palier ${G.hi}</div>${bar(G.xp-G.lo,G.hi-G.lo)}<div>🔥 Série de <b>${G.st}</b> jour${G.st>1?"s":""}</div></div></div><h3 style="margin-top:10px">Défis du jour</h3>${ch.map(c=>`<div class="li"><span>${c[1]?"✅":"⬜"} ${c[0]}</span></div>`).join("")}<div class="bd">${G.B.map(b=>`<span class="${b[2]?"":"off"}">${b[0]}<small>${b[1]}</small></span>`).join("")}</div></div>`}
+
+document.documentElement.dataset.theme="light";
+const EQ=["Salle complète (machines + poids libres)","Machines guidées uniquement","Haltères et poids libres","Poids du corps et élastiques"];
+const mas=(w=84,m=0)=>`<svg viewBox="0 0 100 100" width="${w}" class="ms"><path d="M50 20c2-9 12-12 20-8-3 8-11 11-20 8z" fill="#4ade80"/><circle cx="50" cy="58" r="38" fill="#fb923c"/><ellipse cx="37" cy="42" rx="10" ry="6" fill="#fff" opacity=".3"/><circle cx="37" cy="54" r="5" fill="#1d2420"/><circle cx="63" cy="54" r="5" fill="#1d2420"/><circle cx="38.5" cy="52.5" r="1.8" fill="#fff"/><circle cx="64.5" cy="52.5" r="1.8" fill="#fff"/><circle cx="27" cy="65" r="5" fill="#f87171" opacity=".55"/><circle cx="73" cy="65" r="5" fill="#f87171" opacity=".55"/>${m==1?'<ellipse cx="50" cy="73" rx="6" ry="7" fill="#7c2d12"/>':'<path d="M39 67q11 12 22 0z" stroke="#7c2d12" stroke-width="3" fill="#fff" stroke-linejoin="round"/>'}</svg>`;
+function head(){const g=tg(),t=sum(eat()),G=game(),n=S.p.name?" "+esc(S.p.name):"";let m,mo=0;
+if(g.k&&t.k>g.k){mo=1;m="Oups, on a dépassé un peu. Pas grave, on repart de plus belle !"}else if(g.k&&t.p>=g.p)m="Objectif protéines atteint, bravo ! 💪";else if(!eat().length)m=day==T?`Bonjour${n} ! On note ton petit-déj ? 🥐`:"Rien de noté ce jour-là.";else if(G.st>=3)m=`${G.st} jours d’affilée, tu es en feu ! 🔥`;else m=`Plus que ${Math.max(0,g.k-t.k)} kcal à manger, tu gères !`;
+return `<div class="hd">${mas(84,mo)}<div class="bub">${m}</div></div>`}
+const strip=()=>`<div class="wk"><button class="x" onclick="wo++;render()">‹</button>${[6,5,4,3,2,1,0].map(n=>{const x=new Date(Date.now()-(n+7*wo)*864e5),k=iso(x),on=(S.m[k]||[]).length;return `<div class="${on?"on":""} ${k==day?"td":""}" onclick="day='${k}';render()"><small>${"DLMMJVS"[x.getDay()]}</small><b>${x.getDate()}</b></div>`}).join("")}<button class="x" onclick="if(wo>0){wo--;render()}">›</button></div>`;
+function vOb(){const p=S.p;if(p.wnow==null)p.wnow=cw();
+const inp=(k,l,t="number",x="")=>`<label>${l}</label><input type="${t}" ${x} value="${esc(p[k])}" onchange="S.p.${k}=this.value">`,sl=(k,o)=>`<select onchange="S.p.${k}=this.value">${o.map(x=>`<option value="${x[0]}" ${p[k]==x[0]?"selected":""}>${x[1]}</option>`).join("")}</select>`;
+const P=[`<h1>Salut ! Moi c’est Zeste 🍊</h1><p>Je serai ton coach nutrition et muscu. On règle tout ensemble en 1 minute.</p>${inp("name","Ton prénom","text")}`,
+`<h1>Ton corps</h1><label>Sexe</label>${sl("sex",[["h","Homme"],["f","Femme"]])}${inp("age","Âge")}${inp("h","Taille (cm)")}${inp("wnow","Poids actuel (kg)","number",'step="0.1"')}`,
+`<h1>Ton objectif</h1><label>Je veux…</label>${sl("gf",[["1.08","Prendre du muscle"],["1","Maintenir mon poids"],["0.85","Perdre du poids"]])}<label>Activité au quotidien</label>${sl("act",[["1.4","Plutôt sédentaire"],["1.55","Actif modéré"],["1.7","Très actif"]])}`,
+`<h1>Ton sport</h1>${inp("days","Séances par semaine","number",'min="2" max="6"')}${inp("dur","Durée max (min)")}<label>Matériel</label>${sl("eq",EQ.map(e=>[e,e]))}${inp("gym","Nom de ta salle (facultatif)","text")}`];
+return `<div class="hd">${mas(96)}<div class="bub">Étape ${ob+1} sur 4</div></div><div class="card">${P[ob]}</div><div class="row">${ob?`<button class="g" onclick="ob--;render()">Retour</button>`:""}<button onclick="obNext()">${ob<3?"Suivant":"C’est parti !"}</button></div>`}
+function obNext(){if(ob<3){ob++;render();scrollTo(0,0);return}S.p.ok=1;S.w=S.w.filter(e=>e.d!=T);S.w.push({d:T,v:+S.p.wnow||cw()});save();render()}
+
+/* ---------- RECETTES ---------- */
+const TL=["Tous","Cookeo","Four","Poêle","Air fryer","Micro-ondes","Sans cuisson"];
+function vRcOld(){const g=tg(),sl=SL.find(s=>s[0]==rcS);
+return `<h1>Recettes</h1><div class="card"><label>Dans mon frigo / placard</label><textarea oninput="rcI=this.value" placeholder="poulet, œufs, courgettes, riz, yaourt grec…">${esc(rcI)}</textarea><label>Ustensile</label><div class="chips">${TL.map(t=>`<button class="${t==rcT?"":"g"}" onclick="rcT='${t}';render()">${t}</button>`).join("")}</div><label>Pour quel repas ?</label><select onchange="rcS=this.value;render()">${SL.map(s=>`<option value="${s[0]}" ${s[0]==rcS?"selected":""}>${s[1]} (≈ ${Math.round(g.k*s[3])||"?"} kcal)</option>`).join("")}</select><button id="rb" onclick="rec()">🍳 Trouver des recettes</button><div id="st" class="mu">${esc(msg)}</div></div>
+${rcR.map((r,i)=>`<div class="card"><div class="sl"><div class="ic">${esc(r.emoji||"🍽️")}</div><div><b>${esc(r.nom)}</b><div class="mu">${esc(r.outil)} · ${esc(r.temps)}</div></div></div><div class="row mc"><span>🔥 ${r.kcal} kcal</span><span>P ${r.p} g</span><span>G ${r.g} g</span><span>L ${r.l} g</span></div><details><summary>Ingrédients et étapes</summary><div class="mu">${(r.ingr||[]).map(esc).join(" · ")}</div><ol>${(r.etapes||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ol></details><button onclick="addR(${i})">+ Ajouter au journal (${sl[1]})</button></div>`).join("")}`}
+async function recOld(){if(!rcI.trim()){$("#st").textContent="Indique ce que tu as sous la main.";return}$("#rb").disabled=true;$("#st").textContent="Je cuisine des idées…";const g=tg(),sl=SL.find(s=>s[0]==rcS),b=Math.round(g.k*sl[3])||600;
+try{const r=await ai(`Propose 4 recettes simples en français pour une personne qui reconstruit du muscle (${g.p} g de protéines par jour). Ingrédients disponibles : ${rcI}. Ustensile : ${rcT=="Tous"?"au choix":rcT}. Repas : ${sl[1]}, environ ${b} kcal par portion (±15 %). Utilise surtout les ingrédients listés, tu peux ajouter des basiques de placard. Calcule calories et macros par portion honnêtement, sans sous-estimer l’huile. Réponds UNIQUEMENT en JSON : {"recettes":[{"nom":string,"emoji":string,"outil":string,"temps":string,"kcal":number,"p":number,"g":number,"l":number,"ingr":[string],"etapes":[string]}]}`);
+rcR=r.recettes||[];msg="";render()}catch(e){$("#rb").disabled=false;$("#st").textContent="Échec : "+(e.message||e.code||"erreur")}}
+function addR(i){const r=rcR[i];(S.m[day]=S.m[day]||[]).push({s:rcS,nom:r.nom,k:Math.round(r.kcal),p:Math.round(r.p),g:Math.round(r.g),l:Math.round(r.l)});save();tab="cal";render()}
+
+const RC=["Tous","❤ Favoris","Cocktail dînatoire","Faible en calories","Desserts","Froid","Chaud","Petit-déj","Riche en protéines"],GR=["#fdba74,#fb923c","#fca5a5,#f87171","#86efac,#4ade80","#93c5fd,#60a5fa","#d8b4fe,#c084fc","#fde68a,#fbbf24"];let rcC="Tous",rcO=null;
+const gr=id=>`linear-gradient(135deg,${GR[[...id].reduce((a,c)=>a+c.charCodeAt(0),0)%6]})`;
+const vis=(r,c)=>(r.ph||r.url)?`<img src="${r.ph||r.url}" class="rimg" loading="lazy">`:`<span>${esc(r.emoji||"🍽️")}</span>${c?`<small>${(r.ingr||[]).slice(0,4).map(i=>esc(i.e)).join("")}</small>`:""}`;
+function vRcB(){S.rl=S.rl||[];if(rcO){const r=S.rl.find(x=>x.id==rcO);if(r)return fiche(r);rcO=null}
+const L=S.rl.filter(r=>rcC=="Tous"||(rcC[0]=="❤"?r.fav:r.cat==rcC));
+return `<h1>Recettes</h1><div class="chips sc">${RC.map(c=>`<button class="${c==rcC?"":"g"}" onclick="rcC='${c}';render()">${c}</button>`).join("")}</div>
+<div class="card"><label>Dans mon frigo (facultatif)</label><input value="${esc(rcI)}" oninput="rcI=this.value" placeholder="poulet, courgettes, œufs…"><label>Ustensile</label><div class="chips">${TL.map(t=>`<button class="${t==rcT?"":"g"}" onclick="rcT='${t}';render()">${t}</button>`).join("")}</div><button id="rb" onclick="rec()">✨ Générer des recettes : ${rcC}</button><div id="st" class="mu">${esc(msg)}</div></div>
+<div class="rg">${L.map(r=>`<div class="rc" onclick="rcO='${r.id}';render();scrollTo(0,0)"><div class="rh" style="background:${gr(r.id)}">${vis(r,1)}<i>${r.fav?"❤️":""}</i></div><b>${esc(r.nom)}</b><div class="mu">⏱ ${esc(r.temps)} · 🔥 ${r.kcal} kcal</div></div>`).join("")||`<div class="mu">Aucune recette ici pour l’instant.</div>`}</div>`}
+function fiche(r){return `<button class="g" onclick="rcO=null;render()">‹ Retour</button><div class="fh" style="background:${gr(r.id)}">${vis(r)}<button class="fv2" onclick="favR('${r.id}')">${r.fav?"❤️":"🤍"}</button></div>
+<div class="card"><h1 style="font-size:24px;margin:0 0 6px">${esc(r.nom)}</h1><div class="mu">⏱ ${esc(r.temps)} · 👥 ${r.pers||1} pers. · 👨‍🍳 ${esc(r.diff||"Facile")} · ${esc(r.outil||"")}</div>
+<div class="row mc"><span>🔥 ${r.kcal}<br>kcal</span><span>🥩 ${r.p} g<br>prot.</span><span>🍞 ${r.g} g<br>gluc.</span><span>🥑 ${r.l} g<br>lip.</span></div>
+<h3>Ingrédients</h3><div class="ig">${(r.ingr||[]).map(i=>`<div><span class="ie">${esc(i.e)}</span><b>${esc(i.q)}</b> ${esc(i.n)}</div>`).join("")}</div>
+<h3>Préparation</h3>${(r.etapes||[]).map((e,i)=>`<div class="stp"><b>${i+1}</b><span>${esc(e)}</span></div>`).join("")}${r.astuce?`<div class="bub" style="margin:10px 0">💡 ${esc(r.astuce)}</div>`:""}
+<label>Ajouter au journal pour…</label><select onchange="rcS=this.value">${SL.map(s=>`<option value="${s[0]}" ${s[0]==rcS?"selected":""}>${s[1]}</option>`).join("")}</select><button onclick="addR2('${r.id}')">+ Ajouter au journal</button>
+<label>📸 Ma réalisation</label><input type="file" accept="image/*" onchange="shot('${r.id}',this.files[0])"><div class="stars">${[1,2,3,4,5].map(n=>`<span onclick="rate('${r.id}',${n})">${n<=(r.note||0)?"⭐":"☆"}</span>`).join("")}</div><button class="g" onclick="delR('${r.id}')">Supprimer cette recette</button></div>`}
+const RR=id=>S.rl.find(x=>x.id==id);
+function favR(id){RR(id).fav=!RR(id).fav;save();render()}function rate(id,n){RR(id).note=n;save();render()}function delR(id){S.rl=S.rl.filter(x=>x.id!=id);rcO=null;save();render()}
+function addR2(id){const r=RR(id);(S.m[day]=S.m[day]||[]).push({s:rcS,nom:r.nom,k:Math.round(r.kcal),p:Math.round(r.p),g:Math.round(r.g),l:Math.round(r.l)});save();tab="cal";rcO=null;render()}
+async function shot(id,f){if(!f)return;const b=await rs(f),i=new Image();i.onload=()=>{const s=480/Math.max(i.width,i.height),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);RR(id).ph=c.toDataURL("image/jpeg",.7);save();render()};i.src=URL.createObjectURL(b)}
+async function rec(){if(rcC[0]=="❤"){msg="Choisis une autre catégorie pour générer.";render();return}$("#rb").disabled=true;$("#st").textContent="Zeste ouvre son livre de recettes…";const g=tg();
+try{const r=await ai(`Propose 4 recettes en français, catégorie « ${["Tous","Mon frigo","Cookeo","Pour toi"].includes(rcC)?"variées (plats, desserts, froids, chauds)":rcC} », pour une personne qui reconstruit du muscle (${g.p} g de protéines par jour, objectif ${g.k} kcal). ${rcC=="Mon frigo"&&rcI?"Utilise surtout : "+rcI+".":""} ${rcX} Ustensile : ${rcT=="Tous"?"au choix":rcT}. Repères : "Faible en calories" = moins de 400 kcal ; "Desserts" = moins de 300 kcal, riches en protéines si possible ; "Cocktail dînatoire" = bouchées à partager, la portion = 4 pièces. Macros par portion, honnêtes, huile comprise. JSON uniquement : {"recettes":[{"nom":string,"emoji":string (un emoji du plat),"q":string (nom du plat en anglais, 2 à 4 mots),"cat":string,"outil":string,"temps":string,"pers":number,"diff":"Facile" ou "Moyen","kcal":number,"p":number,"g":number,"l":number,"ingr":[{"e":string (un emoji),"n":string,"q":string}],"etapes":[string],"astuce":string}]}`);
+(r.recettes||[]).forEach((x,i)=>S.rl.unshift({...x,id:"r"+Date.now()+i,cat:rcC=="Tous"?(x.cat||"Chaud"):rcC}));await pics();save();msg="";render()}catch(e){$("#rb").disabled=false;$("#st").textContent="Échec : "+(e.message||e.code||"erreur")}}
+
+let rcX="";const CT=[["Mon frigo","🧊","🥕",0],["Cookeo","🍳","🍲",1],["Cocktail dînatoire","🥂","🍢",4],["Faible en calories","🥗","🥒",2],["Desserts","🍰","🍓",1],["Froid","🥙","🍣",3],["Chaud","🍲","🍜",0],["Petit-déj","🥞","🍌",5],["Riche en protéines","🍗","🥚",2],["❤ Favoris","❤️","⭐",4]];
+const card=r=>`<div class="rc" onclick="rcO='${r.id}';render();scrollTo(0,0)"><div class="rh" style="background:${gr(r.id)}">${vis(r,1)}<i>${r.fav?"❤️":""}</i></div><b>${esc(r.nom)}</b><div class="mu">⏱ ${esc(r.temps)} · 🔥 ${r.kcal} kcal · 🥩 ${r.p} g</div></div>`;
+function openC(c){rcC=c;rcX="";msg="";if(c=="Cookeo")rcT="Cookeo";render();scrollTo(0,0)}
+function vRc(){S.rl=S.rl||[];if(rcO){const r=S.rl.find(x=>x.id==rcO);if(r)return fiche(r);rcO=null}if(rcC)return vCat();
+const g=tg(),rest=g.k-sum(eat()).k,rr=S.rl.filter(x=>!g.k||x.kcal<=Math.max(rest,0)+30).sort((a,b)=>b.p-a.p).slice(0,8);
+return `<h1>Recettes</h1><div class="rg">${CT.map(c=>`<div class="ct" style="background:linear-gradient(135deg,${GR[c[3]]})" onclick="openC('${c[0]}')"><i>${c[2]}</i><span>${c[1]}</span><b>${c[0]}</b></div>`).join("")}</div>
+<h3>✨ Recommandé pour toi</h3><div class="mu">${g.k?`Il te reste ${Math.max(rest,0)} kcal aujourd’hui : voici ce qui rentre, en priorité les plus protéinés.`:"Renseigne ton profil pour des conseils sur mesure."}</div><div class="hs">${rr.map(card).join("")||`<div class="mu">Pas encore de recette enregistrée.</div>`}</div><button id="rb" onclick="reco()">✨ Nouvelles idées pour moi</button><div id="st" class="mu">${esc(msg)}</div>`}
+function vCat(){const c=CT.find(x=>x[0]==rcC)||[rcC,"🍽️","",0],L=S.rl.filter(r=>rcC[0]=="❤"?r.fav:r.cat==rcC);
+return `<button class="g" onclick="rcC=null;render()">‹ Toutes les catégories</button><div class="ct" style="margin:10px 0;background:linear-gradient(135deg,${GR[c[3]]})"><i>${c[2]}</i><span>${c[1]}</span><b>${rcC}</b></div>
+${rcC[0]=="❤"?"":`<div class="card">${rcC=="Mon frigo"?`<label>Qu’as-tu dans ton frigo ?</label><input value="${esc(rcI)}" oninput="rcI=this.value" placeholder="poulet, courgettes, œufs…">`:""}<label>Ustensile</label><div class="chips">${TL.map(t=>`<button class="${t==rcT?"":"g"}" onclick="rcT='${t}';render()">${t}</button>`).join("")}</div><button id="rb" onclick="rec()">✨ Générer des recettes</button><div id="st" class="mu">${esc(msg)}</div></div>`}
+<div class="rg big">${L.map(card).join("")||`<div class="mu">Aucune recette ici pour l’instant.</div>`}</div>`}
+async function reco(){const g=tg(),t=sum(eat());rcC="Pour toi";rcX=`Il reste ${Math.max(g.k-t.k,0)} kcal et ${Math.max(g.p-t.p,0)} g de protéines à manger aujourd’hui, il est ${new Date().getHours()} h : propose des plats adaptés à ce moment de la journée et à ce budget.`;const n=S.rl.length;await rec();rcC=null;rcX="";if(S.rl.length>n)render()}
+
+async function pics(){await Promise.all(S.rl.filter(r=>r.q&&!r.url).slice(0,8).map(async r=>{try{const j=await(await fetch(API+"/photo?q="+encodeURIComponent(r.q))).json();r.url=j.url||""}catch(e){}}))}
+/* ---------- SPORT ---------- */
+const lastOf=n=>{for(let i=S.log.length-1;i>=0;i--){const e=S.log[i].ex.find(x=>x.n==n&&x.kg);if(e)return e}};
+function vTr(){const p=S.prog;
+if(sess!==null&&p){const s=p.seances[sess];return `<h1>${esc(s.titre)}</h1><div class="card">${s.exos.map((e,i)=>{const l=lastOf(e.n);return `<div style="margin-bottom:12px"><b>${esc(e.n)}</b><div class="mu">${esc(e.s)} × ${esc(e.r)}${e.note?" · "+esc(e.note):""}${l?` · dernière fois : ${l.kg} kg × ${l.reps}`:""}</div><div class="row"><input id="kg${i}" type="number" step="0.5" placeholder="kg"><input id="rp${i}" type="number" placeholder="reps"></div></div>`}).join("")}<button onclick="endS()">Terminer la séance</button><button class="g" onclick="sess=null;render()">Annuler</button></div>`}
+const g=p?`<div class="card"><h3>${esc(p.nom)}</h3>${p.seances.map((s,i)=>`<div class="li"><div><b>${esc(s.jour)}</b> · ${esc(s.titre)}<div class="mu">${s.exos.map(e=>esc(e.n)).join(", ")}</div></div><button onclick="sess=${i};render()" style="flex:0">Go</button></div>`).join("")}</div>`:"";
+return `<h1>Musculation</h1>${g}<div class="card"><h3>${p?"Régénérer":"Générer"} mon programme</h3><div class="mu">Basé sur ton profil : ${S.p.days} jours/semaine, ${S.p.dur} min, ${esc(S.p.eq)}${S.p.gym?" ("+esc(S.p.gym)+")":""}. Modifiable dans Profil.</div><button id="gb" onclick="gen()">${p?"Nouveau programme":"Créer mon programme"}</button><div id="st" class="mu">${esc(msg)}</div></div>
+<div class="card"><h3>Dernières séances</h3>${S.log.length?[...S.log].reverse().slice(0,5).map(l=>`<div class="li"><div>${l.d} · ${esc(l.s)}<div class="mu">${l.ex.filter(e=>e.kg).map(e=>esc(e.n)+" "+e.kg+"×"+e.reps).join(", ")||"–"}</div></div></div>`).join(""):`<div class="mu">Aucune séance enregistrée.</div>`}</div>`}
+async function gen(){$("#gb").disabled=true;$("#st").textContent="Création du programme…";const q=S.p;
+try{const r=await ai(`Crée un programme de musculation en français pour une personne qui a perdu environ 75 kg (de 166 à ${cw()} kg) et veut regagner du muscle et se tonifier. Niveau : débutant. Séances par semaine : ${q.days}. Durée max par séance : ${q.dur} min. Matériel : ${q.eq}${q.gym?" (salle : "+q.gym+")":""}. ${q.age?"Âge : "+q.age+" ans.":""}
+Contraintes : exercices polyarticulaires en priorité, machines guidées bienvenues pour débuter, éviter les impacts et sauts, 4 à 7 exercices par séance tenant dans la durée, progression simple, jours répartis avec repos entre séances.
+Réponds UNIQUEMENT en JSON : {"nom":string,"seances":[{"jour":string,"titre":string,"exos":[{"n":string,"s":string,"r":string,"note":string}]}]} avec exactement ${q.days} séances. "s" = nombre de séries, "r" = répétitions (ex : "8-12"), "note" = conseil court ou chaîne vide.`);
+if(!r.seances||!r.seances.length)throw new Error("réponse vide");S.prog=r;save();msg="";render()}catch(e){$("#gb").disabled=false;$("#st").textContent="Échec : "+(e.message||e.code||"erreur")}}
+function endS(){const s=S.prog.seances[sess];S.log.push({d:T,s:s.titre,ex:s.exos.map((e,i)=>({n:e.n,kg:+$("#kg"+i).value||0,reps:+$("#rp"+i).value||0}))});save();sess=null;render()}
+
+/* ---------- PROFIL ---------- */
+function vPr(){const p=S.p,g=tg(),f=(k,l,t="number",x="")=>`<div><label>${l}</label><input type="${t}" ${x} value="${esc(p[k])}" onchange="S.p.${k}=this.value;save()"></div>`;
+return `<h1>Profil</h1>${budget()}<div class="card"><div class="row">${f("h","Taille (cm)")}${f("age","Âge")}</div><label>Sexe</label><select onchange="S.p.sex=this.value;save()"><option value="h" ${p.sex=="h"?"selected":""}>Homme</option><option value="f" ${p.sex=="f"?"selected":""}>Femme</option></select>
+<label>Niveau d’activité (hors sport)</label><select onchange="S.p.act=+this.value;save()">${[[1.4,"Plutôt sédentaire"],[1.55,"Actif modéré"],[1.7,"Très actif"]].map(o=>`<option value="${o[0]}" ${p.act==o[0]?"selected":""}>${o[1]}</option>`).join("")}</select>
+<div class="row">${f("kcal","Objectif kcal (vide = auto)")}${f("prot","Objectif protéines g")}</div><div class="mu">Objectif actuel : ${g.k||"?"} kcal, ${g.p} g de protéines. Calcul indicatif (léger surplus pour construire du muscle) : à valider avec un médecin ou diététicien.</div><button class="g" onclick="render()">Actualiser</button></div>
+<div class="card"><h3>Entraînement</h3><div class="row">${f("days","Jours / semaine","number",'min="2" max="6"')}${f("dur","Durée (min)")}</div><label>Matériel disponible</label><select onchange="S.p.eq=this.value;save()">${["Salle complète (machines + poids libres)","Machines guidées uniquement","Haltères et poids libres","Poids du corps et élastiques"].map(o=>`<option ${p.eq==o?"selected":""}>${o}</option>`).join("")}</select>${f("gym","Ma salle (nom)","text")}</div>
+<div class="card"><button class="g" onclick="if(confirm('Tout effacer ?')){localStorage.removeItem(K);location.reload()}">Réinitialiser mes données</button><div class="mu">Données stockées uniquement sur cet appareil.</div></div>`}
+render();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
+</script></body></html>
