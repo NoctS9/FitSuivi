@@ -9,7 +9,7 @@ return new Response(JSON.stringify({url:"data:image/jpeg;base64,"+btoa(s)}),{hea
 if(req.headers.get("x-app-key")!=env.APP_KEY)return new Response("no",{status:401,headers:H});
 const{prompt,images=[]}=await req.json();
 const model=env.MODEL||"gemini-2.5-flash";
-const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{method:"POST",headers:{"x-goog-api-key":env.AQ.Ab8RN6J8OkA757a8fTdxGh4ZQTWHaNwXOaI7Wjdj7JytLIWUbQ,"content-type":"application/json"},
+const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{method:"POST",headers:{"x-goog-api-key":env.GEMINI_KEY,"content-type":"application/json"},
 body:JSON.stringify({systemInstruction:{parts:[{text:"Réponds uniquement par un objet JSON valide, sans texte autour ni balises."}]},
 contents:[{role:"user",parts:[...images.map(d=>({inline_data:{mime_type:"image/jpeg",data:d}})),{text:prompt}]}],generationConfig:{responseMimeType:"application/json"}})});
 const j=await r.json();const t=(j.candidates?.[0]?.content?.parts||[]).map(p=>p.text||"").join("").replace(/```json|```/g,"").trim();
